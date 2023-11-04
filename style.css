@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+:root {
+  --background: rgb(43, 50, 65);
+  --overlay: #363c4b;
+  --links: rgba(55, 193, 255, 1);
+  --gray: rgb(220, 244, 255);
+  --muted: rgba(221, 221, 221, 0.263);
+  --color: white;
+  --outline: white;
+  --font: Inter, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-block: 4rem;
+  gap: 8rem;
+  font-family: var(--font);
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+}
+
+h1,
+p,
+span,
+div {
+  color: var(--color);
+}
+
+p, span, div, a {
+  font-weight: 400;
+}
+
+a {
+  color: var(--links);
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font);
+}
+
+a:focus {
+  outline: solid 1px var(--outline);
+  outline-offset: 2px;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.title {
+  font-size: 4rem;
+}
+
+.user {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1.25rem;
+  padding-block: .5rem;
+  border-radius: .5rem;
+  background-color: var(--overlay);
+  margin-bottom: 2rem;
+  gap: .5rem;
+}
+
+.user img {
+  width: 2.8rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.main-description {
+  font-size: 1.1rem;
+  color: var(--gray);
+  text-align: center;
+  margin-inline: 2rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .main-description {
+    margin-inline: 1rem;
+  }
+}
+
+.main-description code {
+  padding: .2rem;
+  border: solid 1px var(--muted);
+  border-radius: .4rem;
+  background-color: var(--overlay);
+  color: var(--color);
+}
+
+/** timeline code */
+
+.container {
+  display: flex;
+  gap: 4rem;
+  position: relative;
+}
+
+.container .line {
+  background-color: var(--gray);
+  position: absolute;
+}
+
+.container.vertical {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-block: 4rem;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.container.vertical .line {
+  width: 1px;
+  height: 100%;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%);
+}
+
+.container.vertical .line::before, .container.vertical .line::after {
+  content: '';
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--gray);
+  border-radius: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 0;
+}
+
+.container.vertical .line::after {
+  top: unset;
+  bottom: -1rem;
+}
+
+.card {
+  background-color: var(--overlay);
+  padding: 1.5rem;
+  border-radius: .5rem;
+  width: 30rem;
+  max-width: calc(50vw - 4rem);
+  position: relative;
+  left: 50%;
+  transform: translate(calc(-100% - 2.5rem));
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+.card.active {
+  opacity: 1;
+}
+
+.card:nth-child(2n+1) {
+  align-self: flex-start;
+  transform: translate(calc(.01% + 2.5rem));
+}
+
+.card .signal {
+  height: 1rem;
+  aspect-ratio: 1;
+  background-color: var(--gray);
+  border-radius: 50%;
+  position: absolute;
+  left: calc(100% + 2rem);
+  animation: pulse 1250ms infinite;
+}
+
+.card:nth-child(2n+1) .signal {
+  left: unset;
+  right: calc(100% + 2rem);
+}
+
+@media (max-width: 750px) {
+
+  .container.vertical .card .signal {
+    left: 50%;
+    transform: translate(-50%) !important;
+    right: unset;
+    top: -1rem;
+    z-index: 5;
+  }
+
+  .container.vertical {
+    align-items: center;
+  }
+
+  .container.vertical .card {
+    transform: unset;
+    left: unset;
+    right: unset;
+    max-width: calc(100% - 4rem);
+    margin-top: 2rem;
+  }
+
+  .card:nth-child(2n+1) {
+    align-self: unset;
+  }
+
+}
+
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 var(--muted);
+	}
+	
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px transparent;
+	}
+	
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 transparent;
+	}
+}
+
+.card ul {
+  margin-top: 1rem;
+  padding-left: 1.5rem !important;
+}
+
+.card ul li {
+  margin-block: .1rem;
+}
+
+.end-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1.5rem;
+}
+
+.end-button {
+  font-size: 1.5rem;
+  background-color: var(--overlay);
+  padding: .75rem 1.5rem;
+  color: var(--color);
+  border-radius: .25rem;
+  border: solid 1px var(--muted);
+  cursor: pointer;
+  transition-duration: 300ms;
+  transition-property: background-color, color;
+}
+
+.end-button:focus {
+  outline: solid 2px var(--outline);
+  outline-offset: 2px;
+}
+
+.end-button:hover {
+  background-color: var(--muted);
+}
