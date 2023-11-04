@@ -9,6 +9,8 @@ If you haven't seen, this is the file structure:
 - README.md // this file
 ```
 
+**NOTE: `.horizontal` MODE DOES NOT WORK AS OF NOW. MAYBE IN THE UPCOMING DAYS**
+
 ## Creating your own
 Assuming you want this kind of timeline in your project, it's pretty simple and your custom theme can be integrated easily into the timeline.
 
