@@ -30,7 +30,7 @@ the above styles are the basic theme, and you can use your own colors.
 
 There are a few things you might not want, like the imported font and body styles, so you can just go ahead and remove those.
 
-> `NOTE: if you are removing the body styles, the timeline will not be centered and stuff, so just make sure you have a way to position the timeline container.`
+> NOTE: if you are removing the body styles, the timeline will not be centered and stuff, so just make sure you have a way to position the timeline container.
 
 after the body styles, there are also a few default stylings for the whole page, so you can also remove those styles.
 
@@ -56,7 +56,8 @@ the `.line` and `.signal` elements are necessary for the timeline and the circle
 ---
 finally, the javascript part. The javascript is only necessary if you want the animations when the card is on the visible viewport. The only thing the `script.js` file does is add a class from the card which then makes it appear by the CSS styles.
 
-> `NOTE: if you are not taking the javascript file, you need to remember to remove the CSS style from the card which makes it visibility hidden`
+> NOTE: if you are not taking the javascript file, you need to remember to remove the CSS style from the card which makes it visibility hidden
+
 
 ```css
 .card {
