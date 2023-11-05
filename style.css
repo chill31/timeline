@@ -160,11 +160,14 @@ header {
   background-color: var(--overlay);
   padding: 1.5rem;
   border-radius: .5rem;
-  width: calc(50% - 4rem);
   position: relative;
   opacity: 0;
   pointer-events: none;
   transition: opacity 300ms ease-in-out;
+}
+
+.container.vertical .card {
+  width: calc(50% - 4rem);
 }
 
 .card.active {
@@ -172,7 +175,7 @@ header {
   pointer-events: all;
 }
 
-.card:nth-child(2n+1) {
+.container.vertical .card:not(:nth-of-type(2n+1)) {
   align-self: flex-end;
 }
 
@@ -216,7 +219,7 @@ header {
     margin-top: 2rem;
   }
 
-  .card:nth-child(2n+1) {
+  .container.vertical .card:not(:nth-of-type(2n+1)) {
     align-self: unset;
   }
 
