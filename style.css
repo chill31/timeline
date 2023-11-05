@@ -117,18 +117,18 @@ header {
   position: relative;
 }
 
-.container .line {
-  background-color: var(--gray);
-  position: absolute;
-}
-
 .container.vertical {
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   padding-block: 4rem;
-  width: 100vw;
+  width: calc(100vw - 12rem);
   min-height: 100vh;
+}
+
+.container .line {
+  background-color: var(--gray);
+  position: absolute;
 }
 
 .container.vertical .line {
@@ -160,11 +160,8 @@ header {
   background-color: var(--overlay);
   padding: 1.5rem;
   border-radius: .5rem;
-  width: 30rem;
-  max-width: calc(50vw - 4rem);
+  width: calc(50% - 4rem);
   position: relative;
-  left: 50%;
-  transform: translate(calc(-100% - 2.5rem));
   opacity: 0;
   pointer-events: none;
   transition: opacity 300ms ease-in-out;
@@ -176,8 +173,7 @@ header {
 }
 
 .card:nth-child(2n+1) {
-  align-self: flex-start;
-  transform: translate(calc(.01% + 2.5rem));
+  align-self: flex-end;
 }
 
 .card .signal {
@@ -186,16 +182,43 @@ header {
   background-color: var(--gray);
   border-radius: 50%;
   position: absolute;
-  left: calc(100% + 2rem);
+  top: 0;
+  right: -4.5rem;
   animation: pulse 1250ms infinite;
 }
 
 .card:nth-child(2n+1) .signal {
-  left: unset;
-  right: calc(100% + 2rem);
+  left: -4.5rem;
+  right: unset;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 900px) {
+
+  .container.vertical {
+    width: calc(100vw - 4rem)
+  }
+
+}
+
+@media (max-width: 725px) {
+
+  .container.vertical {
+    align-items: center;
+    width: 100vw;
+  }
+
+  .container.vertical .card {
+    transform: unset;
+    left: unset;
+    right: unset;
+    width: 25rem;
+    max-width: calc(100% - 3rem);
+    margin-top: 2rem;
+  }
+
+  .card:nth-child(2n+1) {
+    align-self: unset;
+  }
 
   .container.vertical .card .signal {
     left: 50%;
@@ -203,22 +226,6 @@ header {
     right: unset;
     top: -1rem;
     z-index: 5;
-  }
-
-  .container.vertical {
-    align-items: center;
-  }
-
-  .container.vertical .card {
-    transform: unset;
-    left: unset;
-    right: unset;
-    max-width: calc(100% - 4rem);
-    margin-top: 2rem;
-  }
-
-  .card:nth-child(2n+1) {
-    align-self: unset;
   }
 
 }
