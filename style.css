@@ -28,7 +28,9 @@ body {
   font-family: var(--font);
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-weight: 700;
 }
 
@@ -39,7 +41,10 @@ div {
   color: var(--color);
 }
 
-p, span, div, a {
+p,
+span,
+div,
+a {
   font-weight: 400;
 }
 
@@ -109,6 +114,30 @@ header {
   color: var(--color);
 }
 
+.select-mode-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.select-mode {
+  padding: .5rem 1.5rem;
+  border-radius: 10329430px;
+  cursor: pointer;
+  background-color: var(--muted);
+  transition: filter 300ms ease;
+}
+
+.select-mode.selected {
+  background-color: var(--links);
+  color: black;
+}
+
+.select-mode:hover {
+  filter: brightness(.9);
+}
+
 /** timeline code */
 
 .container {
@@ -126,6 +155,17 @@ header {
   min-height: 100vh;
 }
 
+.container.horizontal {
+  width: calc(100vw - 4rem);
+  height: 100vh;
+  max-height: 25rem;
+  padding: 2rem;
+  padding-top: 4.5rem;
+  overflow-x: scroll;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
 .container .line {
   background-color: var(--gray);
   position: absolute;
@@ -139,7 +179,12 @@ header {
   transform: translate(-50%);
 }
 
-.container.vertical .line::before, .container.vertical .line::after {
+.container.horizontal .line {
+  display: none;
+}
+
+.container.vertical .line::before,
+.container.vertical .line::after {
   content: '';
   position: absolute;
   width: 1rem;
@@ -170,6 +215,11 @@ header {
   width: calc(50% - 4rem);
 }
 
+.container.horizontal .card {
+  height: 95%;
+  min-width: 25rem !important;
+}
+
 .card.active {
   opacity: 1;
   pointer-events: all;
@@ -185,14 +235,45 @@ header {
   background-color: var(--gray);
   border-radius: 50%;
   position: absolute;
-  top: 0;
-  right: -4.5rem;
   animation: pulse 1250ms infinite;
 }
 
-.card:nth-child(2n+1) .signal {
+.container.vertical .card .signal {
+  top: 0;
+  right: -4.5rem;
+}
+
+.container.vertical .card:nth-child(2n+1) .signal {
   left: -4.5rem;
   right: unset;
+}
+
+.container.horizontal .card .signal {
+  top: -4rem;
+  left: 0rem;
+}
+
+.container.horizontal .card::before {
+  content: '';
+  top: -4rem;
+  width: calc(100% + 4rem);
+  height: 1px;
+  position: absolute;
+  left: 0;
+  transform: translateY(.5rem);
+  background-color: var(--gray);
+}
+
+.container.horizontal .card:nth-last-of-type(1)::after {
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  right: -4rem;
+  top: -4.5rem;
+  border-radius: 50%;
+  transform: translateY(.5rem);
+  background-color: var(--gray);
 }
 
 @media (max-width: 900px) {
@@ -231,24 +312,30 @@ header {
     z-index: 5;
   }
 
+  .container.vertical .card:not(:nth-of-type(2n+1)) .signal {
+    left: unset;
+    right: 50%;
+    transform: translate(50%) !important;
+  }
+
 }
 
 
 @keyframes pulse {
-	0% {
-		transform: scale(0.95);
-		box-shadow: 0 0 0 0 var(--muted);
-	}
-	
-	70% {
-		transform: scale(1);
-		box-shadow: 0 0 0 10px transparent;
-	}
-	
-	100% {
-		transform: scale(0.95);
-		box-shadow: 0 0 0 0 transparent;
-	}
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 var(--muted);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px transparent;
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 transparent;
+  }
 }
 
 .card .card-title {
@@ -275,7 +362,7 @@ header {
 }
 
 .end-button {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   background-color: var(--overlay);
   padding: .75rem 1.5rem;
   color: var(--color);

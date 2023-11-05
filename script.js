@@ -1,3 +1,22 @@
+const container = document.querySelector('.container');
+
+const selectModes = document.querySelectorAll('.select-mode');
+selectModes.forEach((selectMode) => {
+  selectMode.addEventListener('click', () => {
+    selectModes.forEach((selectMode) => {
+      selectMode.classList.remove('selected');
+    });
+    if(selectMode.classList.contains("select-v")) {
+      container.classList.remove('horizontal');
+      container.classList.add('vertical');
+    } else {
+      container.classList.remove('vertical');
+      container.classList.add('horizontal');
+    }
+    selectMode.classList.add("selected");
+  });
+});
+
 const endButton = document.querySelector('.end-button');
 endButton.addEventListener('click', () => {
   window.location.href = 'https://github.com/chill31/timeline';
@@ -22,4 +41,4 @@ const cardObserver = new IntersectionObserver((entries) => {
 
 allCards.forEach((card) => {
   cardObserver.observe(card);
-})
+});
