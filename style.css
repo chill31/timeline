@@ -126,7 +126,8 @@ header {
   border-radius: 10329430px;
   cursor: pointer;
   background-color: var(--muted);
-  transition: filter 300ms ease;
+  transition: 300ms ease;
+  transition-property: background-color, filter, color;
 }
 
 .select-mode.selected {
@@ -208,21 +209,46 @@ header {
   position: relative;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 300ms ease-in-out;
+  transition: 300ms ease-in-out;
+  transition-property: opacity, transform;
 }
 
 .container.vertical .card {
   width: calc(50% - 4rem);
+  transform: translateX(-20%);
+}
+
+.container.vertical .card:nth-of-type(2n) {
+  transform: translateX(20%);
 }
 
 .container.horizontal .card {
   height: 95%;
   min-width: 25rem !important;
+  transform: translateY(-10%);
 }
+
+/*
+for the reverse animation: */
+/*
+.container.vertical .card {
+  transform: translateX(20%);
+}
+
+.container.vertical .card:nth-of-type(2n) {
+  transform: translateX(-20%);
+}
+
+.container.horizontal .card {
+  transform: translateY(10%);
+}
+
+*/
 
 .card.active {
   opacity: 1;
   pointer-events: all;
+  transform: unset !important;
 }
 
 .container.vertical .card:nth-of-type(2n) {

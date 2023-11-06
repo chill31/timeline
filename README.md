@@ -56,6 +56,9 @@ the `.line` and `.signal` elements are necessary for the timeline and the circle
 ---
 finally, the javascript part. The javascript is only necessary if you want the animations when the card is on the visible viewport. The only thing the `script.js` file does is add a class from the card which then makes it appear by the CSS styles.
 
+If you are including the javascript file, then there is another thing you might want to look out for. There is a variable `hideAfterScroll`, which is by default `false`, meaning once the appearing animation on a card has been done, it will not be repeated, even if the user scrolls away from that card.
+If you change it to `true`, the card will be hidden after the user scrolls away and will have an animation again when the users comes to the card again.
+
 > NOTE: if you are not taking the javascript file, you need to remember to remove the CSS style from the card which makes it visibility hidden
 
 
