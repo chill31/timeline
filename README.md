@@ -4,8 +4,13 @@ If you haven't seen, this is the file structure:
 
 ```go
 - index.html
-- style.css
-- script.js
+- docs.html
+- styles/
+  - docs-style.css
+  - style.css // this is the style file you want to take
+- scripts/
+  - script.js // this is the script file you want to take
+
 - README.md // this file
 ```
 

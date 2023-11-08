@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation for Chill31 Timeline Template</title>
+
+  <link rel="stylesheet" href="/prism/style.css">
+  <link rel="stylesheet" href="/styles/docs-style.css">
+</head>
+
+<body>
+
+  <header>
+    <h1 class="title">Timeline</h1>
+    <span class="title-info-text">documentation for <a href="/">this</a> timeline template</span>
+  </header>
+
+  <main class="docs">
+
+    <section class="getting-started">
+      <h1>Getting Started</h1>
+      <p>Below, you'll find a series of steps outlining how to make the most out of our timeline template. I've tried to
+        keep things clear and simple, because I know the struggles of using something which has a lot of steps.</p>
+
+      <br>
+
+      <ol>
+        <li>Go to the <a href="https://github.com/chill31/timeline">github repository</a></li>
+        <li>Find the code structure there</li>
+        <li>It should be something like this: </li>
+        <br>
+        <pre class="file-structure language-go">
+- index.html
+- docs.html
+- styles/
+  - docs-style.css
+  - style.css
+- scripts/
+  - script.js
+- README.md</pre>
+        <br>
+        <li>The files you need are <code>index.html</code>, <code>style.css</code> and <code>script.js</code></li>
+      </ol>
+    </section>
+
+    <section class="html-code">
+      <h2>HTML</h2>
+      <p>Navigate to <code>index.html</code> and scroll down till you see the <code>.container</code> element. From
+        there, you can see the basic format for the timeline.</p>
+
+      <br>
+
+      <code class="timeline-format-pre code-pre language-html"></code>
+
+      <br>
+
+      <p>This is basically it for the HTML. Only thing customizable through the HTML is the class on the
+        <code>.container</code> element. It's direction is set by the class name, which is by default
+        <code>.vertical</code> as most people would prefer timelines going from up to down. You can replace the class
+        with <code>horizontal</code> to make it scrollable from left to right. See <a href="#custom">Custom
+          properties</a> for more information.
+      </p>
+    </section>
+
+    <section class="css-code">
+      <h2>CSS</h2>
+      <p>CSS code is a bit lengthy. On the top of the file <code>style.css</code>, you will see a <code>:root</code>
+        statement which contains all the CSS variables used in the page. From there, you can customize most of the
+        styling behaviours of the timeline. The below should be the default variables state:</p>
+
+      <br>
+
+      <code class="default-css-variables-pre code-pre language-css"></code>
+
+      <br>
+
+      <p>By the comments, you can probably understand that the variables marked under <code>/* TIMELINE */</code> are
+        required for the timeline to be rendered properly. All of these can be changed to match your theme and design
+      </p>
+
+      <ul>
+
+        <li><code>--overlay</code> => this variable is used for the <code>.card</code> element's background color.</li>
+        <li><code>--gray</code> => this variable is used for the <code>.line</code> element (the element which shows the
+          time<strong>line</strong>) and the signal elements which indicate an item is present on the timeline</li>
+        <li><code>--muted</code> => this variable is used only in the keyframes of the signal pulsing effect thing.</li>
+        <li><code>--gap-from-line</code> => well, the name suggests it all. This variable is used to determine the gap
+          between the card and the timeline. Works in both vertical and horizontal mode.</li>
+        <li><code>--line-dimension</code> => used to set the line's height or width, depending on whether it is vertical
+          mode or horizontal mode. If it is vertical, then the width will be set to this variable, otherwise if it is
+          horizontal mode, then the height will be set to this variable</li>
+        <li><code>--signal-dimension</code> => used to determine the height and width of the signal elements of the
+          card.</li>
+        <li><code>--box-padding</code> => this variable is in use in a lot of random places. First it is used to set the
+          gap between two cards, either vertical or horizontal, and also sets the block level padding of the container
+          when in vertical mode. In horizontal mode, only the top padding is modified with this variable so the signals
+          can fit without overflowing. It is also used in calculating maximum width of a card in devices bigger than
+          specified viewport breakpoint. By default it's the same as the <code>--gap-from-line</code> variable as it
+          looks much better if those variables are the same value. You can provide different values as always.</li>
+
+      </ul>
+
+      <p>The other variables are there just for the page designs, so they do not affect the timeline in any way. So you
+        need to take the above variables and all the CSS code related to the timeline. After the variables, starting
+        from the code given: </p>
+
+      <br>
+
+      <code class="code-pre language-css">.container {
+  display: flex;
+  gap: var(--box-padding);
+  position: relative;
+}</code>
+
+      <br>
+
+      <p>Take the code till here: </p>
+
+      <br>
+
+      <code class="code-pre language-css">.card .card-title {
+  margin-bottom: 1rem;
+}</code>
+
+      <br>
+
+      <p>Although I would not recommend this, see the <a href="/src/styles.css">full timeline styles</a> file and you
+        can link it to your project.</p>
+
+    </section>
+
+    <section class="javascript-code">
+      <h2>Javascript</h2>
+      <p>Javascript is minimal for this project and is not really <strong>required</strong>. The only use is to animate
+        the cards when they are visible in the viewport. The <code>threshold</code> property of <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API"
+          class="link-with-code"><code>IntersectionObserver</code></a> API determines the segment of card visible to run
+        the code out of 1. I have set it to <code>.7</code>. Besides that, there is one other variable at the top of the
+        file <code>hideAfterScroll</code></p>
+
+      <br>
+
+      <code class="code-pre language-javascript">const hideAfterScroll = false;</code>
+
+      <br>
+
+      <p>If you set this to <code>true</code>, the cards, after appearing, can be hidden again when the user scrolls
+        away from them. Then they will again have the appearing animation.</p>
+      <p>For those of you who do not want the animations on appear / dissapear, then you also need to make one change to
+        the CSS =></p>
+
+      <br>
+
+      <code class="code-pre language-css">/* REMOVE THE FOLLOWING CODE FROM THE CSS AS INSTRUCTED */
+
+
+.card {
+  background-color: var(--overlay);
+  padding: 1.5rem;
+  border-radius: .5rem;
+  position: relative;
+
+  /* remove the below styles */
+  opacity: 0;
+  pointer-events: none;
+  transition: 300ms ease-in-out;
+  transition-property: opacity, transform;
+}
+
+.container.vertical .card {
+  width: calc(50% - var(--box-padding));
+
+  /* remove the below line */
+  transform: translateX(-20%);
+}
+
+/* just remove this whole statement */
+.container.vertical .card:nth-of-type(2n) {
+  transform: translateX(20%);
+}
+
+.container.horizontal .card {
+  height: 95%;
+  min-width: 25rem !important;
+
+  /* remove this transform statement */
+  transform: translateY(-10%);
+}
+
+/* remove this statement too as the card will never have an active class (javascript is removed) */
+.card.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: unset !important;
+}
+</code>
+
+      <br>
+      <p>Now, if you completed the above steps correctly, the timeline will work fine without javascript.</p>
+    </section>
+
+    <section class="extra">
+      <h2>Extra</h2>
+      <p>Here are some things you might want to know. Some things will be repeated in case you missed an important
+        thing.<br>The timeline is made for purely custom timelines, which means that you can easily change the sizes and
+        colors of the timeline without any issues. All colors and element sizes are divided into CSS variables</p>
+
+      <br>
+      <br>
+
+
+      <h3>CSS Variables</h3>
+      <p>all sizes and colors are put into CSS variables for <strong>you</strong> to be able to easily customize the
+        timeline according to your theme or design. Given below are all the css variables, their default value, and
+        where they are used.</p>
+
+      <br>
+      <br>
+
+
+        <h4>
+          <li><code>--overlay</code></li>
+        </h4>
+        <p>default value: <code>#363c4b</code><br>Used in: </p>
+
+        <ul>
+          <li><code>.card</code> background-color</li>
+        </ul>
+
+        <br>
+        <br>
+
+        <h4>
+          <li><code>--gray</code></li>
+        </h4>
+        <p>default value: <code>rgb(220, 244, 255)</code><br>Used in: </p>
+
+        <ul>
+          <li><code>.line</code> background-color</li>
+          <li><code>.signal</code> background-color</li>
+        </ul>
+
+        <br>
+        <br>
+
+        <h4>
+          <li><code>--muted</code></li>
+        </h4>
+        <p>default value: <code>rgba(221, 221, 221, 0.263)</code><br>Used in: </p>
+
+        <ul>
+          <li><code>.signal</code> => <code>@keyframes pulse</code></li>
+        </ul>
+
+        <br>
+        <br>
+
+        <h4><li><code>--gap-from-line</code></li></h4>
+        <p>default value: <code>4rem</code><br>Used in: </p>
+
+        <ul>
+          <li><code>--box-padding</code> this variable has same value as the <code>--gap-from-line</code> variable</li>
+          <li><code>.card</code> distance from line</li>
+          <li><code>.signal</code> to calculate how much it should be away from the card to be on the line</li>
+        </ul>
+
+        <br>
+        <br>
+
+        <h4><li><code>--line-dimension</code></li></h4>
+        <p>default value: <code>1px</code><br>Used in: </p>
+
+        <ul>
+          <li><code>.line</code> either height or width of the line, depending on vertical or horizontal mode</li>
+        </ul>
+
+        <br>
+        <br>
+
+        <h4><li><code>--signal-dimension</code></li></h4>
+        <p>default value: <code>1rem</code><br>Used in: </p>
+
+        <ul>
+          <li><code>.signal</code> height and width</li>
+        </ul>
+
+        <br>
+        <br>
+
+        <h4><li><code>--box-padding</code></li></h4>
+        <p>default value: <code>4rem</code> (inherited from <code>--gap-from-line</code>)<br>Used in: </p>
+
+        <ul>
+          <li><code>.container</code> flex gap for the cards</li>
+          <li><code>.container.vertical</code> padding-block (top and bottom)</li>
+          <li><code>.container.horizontal</code> padding-top</li>
+          <li><code>.card</code> calculating width of card</li>
+        </ul>
+
+      <br>
+      <br>
+
+      <h3>Responsiveness</h3>
+      <p>By default, the timeline comes with 2 breakpoints. Horizontal mode has no changes whatsoever. It does not take into account the width of the screen as it is scrollable. Vertical mode is the only layout affected by width, so you have one layout for bigger or medium sized screens, and the other for mobile or small tablets screen.br<br><br>Breakpoint 1: <code>max-width: 900px</code> => fits the cards to take the remaining screen size on their respective side<br>Breakpoint 2: <code>max-width: 725px</code> => puts the cards on the timeline at the center of the screen</p>
+      </p>
+
+    </section>
+
+    <section class="future">
+
+      <h2>Future</h2>
+      <p>One major update planned is for vertical layouts which will theoretically give the option for users to change mobile layouts. Currently a user on mobile will see all cards centered and on the timeline, but the future update will be that the <strong>you</strong> will be able to change where the timeline is (left/right) and where the cards are (centered on the timeline/besides the timeline)</p>
+
+    </section>
+
+  </main>
+
+  <div class="menu-flex">
+
+    <div class="menu-button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+      </svg>
+    </div>
+    <div class="menu-container"></div>
+
+  </div>
+
+  <script src="/scripts/doc-script.js"></script>
+  <script src="/prism/script.js"></script>
+
+</body>
+
+</html>
