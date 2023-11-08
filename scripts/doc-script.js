@@ -17,8 +17,6 @@ timelineFormatPre.textContent = `<div class="container vertical">
 
 const defaultCSSVariablesPre = document.querySelector('code.default-css-variables-pre');
 defaultCSSVariablesPre.textContent = `:root {
-  
-  /* TIMELINE */
   --overlay: #363c4b;
   --gray: rgb(220, 244, 255);
   --muted: rgba(221, 221, 221, 0.263);
@@ -26,13 +24,6 @@ defaultCSSVariablesPre.textContent = `:root {
   --line-dimension: 1px;
   --signal-dimension: 1rem;
   --box-padding: var(--gap-from-line);
-
-  /* PAGE */
-  --font: Inter, sans-serif;
-  --background: rgb(43, 50, 65);
-  --links: rgba(55, 193, 255, 1);
-  --color: white;
-  --outline: white;
 }`
 
 const menuButton = document.querySelector(".menu-button");

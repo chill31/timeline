@@ -32,16 +32,23 @@
         <li>It should be something like this: </li>
         <br>
         <pre class="file-structure language-go">
-- index.html
-- docs.html
-- styles/
-  - docs-style.css
+- prism/
+  - script.js
   - style.css
 - scripts/
+  - doc-script.js
   - script.js
+- src/
+  - script.js
+  - styles.css
+- styles/
+  - docs-styles.css
+  - style.css
+- docs.html
+- index.html
 - README.md</pre>
         <br>
-        <li>The files you need are <code>index.html</code>, <code>style.css</code> and <code>script.js</code></li>
+        <li>The files you need are in the <code>src</code> folder => <code>styles.css</code> and <code>script.js</code></li>
       </ol>
     </section>
 
@@ -66,9 +73,7 @@
 
     <section class="css-code">
       <h2>CSS</h2>
-      <p>CSS code is a bit lengthy. On the top of the file <code>style.css</code>, you will see a <code>:root</code>
-        statement which contains all the CSS variables used in the page. From there, you can customize most of the
-        styling behaviours of the timeline. The below should be the default variables state:</p>
+      <p>CSS code is a bit lengthy. I would recommend you to directly copy the code from <code>src/styles.css</code> instead of the page styles. It will be better that way. On top of the styles file, you will see a kind of config created at the <code>:root</code> of the HTML page</p>
 
       <br>
 
@@ -76,8 +81,7 @@
 
       <br>
 
-      <p>By the comments, you can probably understand that the variables marked under <code>/* TIMELINE */</code> are
-        required for the timeline to be rendered properly. All of these can be changed to match your theme and design
+      <p>The above are CSS variables and will be used to customize most of the things in the timeline like colors, gap from timeline, card padding, margin, etc.
       </p>
 
       <ul>
@@ -102,32 +106,9 @@
 
       </ul>
 
-      <p>The other variables are there just for the page designs, so they do not affect the timeline in any way. So you
-        need to take the above variables and all the CSS code related to the timeline. After the variables, starting
-        from the code given: </p>
-
       <br>
 
-      <code class="code-pre language-css">.container {
-  display: flex;
-  gap: var(--box-padding);
-  position: relative;
-}</code>
-
-      <br>
-
-      <p>Take the code till here: </p>
-
-      <br>
-
-      <code class="code-pre language-css">.card .card-title {
-  margin-bottom: 1rem;
-}</code>
-
-      <br>
-
-      <p>Although I would not recommend this, see the <a href="/src/styles.css">full timeline styles</a> file and you
-        can link it to your project.</p>
+      <p>Although I would not recommend this, you can even link the <code>src/styles.css</code> as a <code>&lt;link&gt;</code> element in your page. It's not recommended as the styles will not be readily available to you and it will be difficult to customize them. It's better if you just take the styles and put them on your own CSS file</p>
 
     </section>
 
@@ -220,90 +201,103 @@
       <br>
 
 
-        <h4>
-          <li><code>--overlay</code></li>
-        </h4>
-        <p>default value: <code>#363c4b</code><br>Used in: </p>
+      <h4>
+        <li><code>--overlay</code></li>
+      </h4>
+      <p>default value: <code>#363c4b</code><br>Used in: </p>
 
-        <ul>
-          <li><code>.card</code> background-color</li>
-        </ul>
+      <ul>
+        <li><code>.card</code> background-color</li>
+      </ul>
 
-        <br>
-        <br>
+      <br>
+      <br>
 
-        <h4>
-          <li><code>--gray</code></li>
-        </h4>
-        <p>default value: <code>rgb(220, 244, 255)</code><br>Used in: </p>
+      <h4>
+        <li><code>--gray</code></li>
+      </h4>
+      <p>default value: <code>rgb(220, 244, 255)</code><br>Used in: </p>
 
-        <ul>
-          <li><code>.line</code> background-color</li>
-          <li><code>.signal</code> background-color</li>
-        </ul>
+      <ul>
+        <li><code>.line</code> background-color</li>
+        <li><code>.signal</code> background-color</li>
+      </ul>
 
-        <br>
-        <br>
+      <br>
+      <br>
 
-        <h4>
-          <li><code>--muted</code></li>
-        </h4>
-        <p>default value: <code>rgba(221, 221, 221, 0.263)</code><br>Used in: </p>
+      <h4>
+        <li><code>--muted</code></li>
+      </h4>
+      <p>default value: <code>rgba(221, 221, 221, 0.263)</code><br>Used in: </p>
 
-        <ul>
-          <li><code>.signal</code> => <code>@keyframes pulse</code></li>
-        </ul>
+      <ul>
+        <li><code>.signal</code> => <code>@keyframes pulse</code></li>
+      </ul>
 
-        <br>
-        <br>
+      <br>
+      <br>
 
-        <h4><li><code>--gap-from-line</code></li></h4>
-        <p>default value: <code>4rem</code><br>Used in: </p>
+      <h4>
+        <li><code>--gap-from-line</code></li>
+      </h4>
+      <p>default value: <code>4rem</code><br>Used in: </p>
 
-        <ul>
-          <li><code>--box-padding</code> this variable has same value as the <code>--gap-from-line</code> variable</li>
-          <li><code>.card</code> distance from line</li>
-          <li><code>.signal</code> to calculate how much it should be away from the card to be on the line</li>
-        </ul>
+      <ul>
+        <li><code>--box-padding</code> this variable has same value as the <code>--gap-from-line</code> variable</li>
+        <li><code>.card</code> distance from line</li>
+        <li><code>.signal</code> to calculate how much it should be away from the card to be on the line</li>
+      </ul>
 
-        <br>
-        <br>
+      <br>
+      <br>
 
-        <h4><li><code>--line-dimension</code></li></h4>
-        <p>default value: <code>1px</code><br>Used in: </p>
+      <h4>
+        <li><code>--line-dimension</code></li>
+      </h4>
+      <p>default value: <code>1px</code><br>Used in: </p>
 
-        <ul>
-          <li><code>.line</code> either height or width of the line, depending on vertical or horizontal mode</li>
-        </ul>
+      <ul>
+        <li><code>.line</code> either height or width of the line, depending on vertical or horizontal mode</li>
+      </ul>
 
-        <br>
-        <br>
+      <br>
+      <br>
 
-        <h4><li><code>--signal-dimension</code></li></h4>
-        <p>default value: <code>1rem</code><br>Used in: </p>
+      <h4>
+        <li><code>--signal-dimension</code></li>
+      </h4>
+      <p>default value: <code>1rem</code><br>Used in: </p>
 
-        <ul>
-          <li><code>.signal</code> height and width</li>
-        </ul>
+      <ul>
+        <li><code>.signal</code> height and width</li>
+      </ul>
 
-        <br>
-        <br>
+      <br>
+      <br>
 
-        <h4><li><code>--box-padding</code></li></h4>
-        <p>default value: <code>4rem</code> (inherited from <code>--gap-from-line</code>)<br>Used in: </p>
+      <h4>
+        <li><code>--box-padding</code></li>
+      </h4>
+      <p>default value: <code>4rem</code> (inherited from <code>--gap-from-line</code>)<br>Used in: </p>
 
-        <ul>
-          <li><code>.container</code> flex gap for the cards</li>
-          <li><code>.container.vertical</code> padding-block (top and bottom)</li>
-          <li><code>.container.horizontal</code> padding-top</li>
-          <li><code>.card</code> calculating width of card</li>
-        </ul>
+      <ul>
+        <li><code>.container</code> flex gap for the cards</li>
+        <li><code>.container.vertical</code> padding-block (top and bottom)</li>
+        <li><code>.container.horizontal</code> padding-top</li>
+        <li><code>.card</code> calculating width of card</li>
+      </ul>
 
       <br>
       <br>
 
       <h3>Responsiveness</h3>
-      <p>By default, the timeline comes with 2 breakpoints. Horizontal mode has no changes whatsoever. It does not take into account the width of the screen as it is scrollable. Vertical mode is the only layout affected by width, so you have one layout for bigger or medium sized screens, and the other for mobile or small tablets screen.br<br><br>Breakpoint 1: <code>max-width: 900px</code> => fits the cards to take the remaining screen size on their respective side<br>Breakpoint 2: <code>max-width: 725px</code> => puts the cards on the timeline at the center of the screen</p>
+      <p>By default, the timeline comes with 2 breakpoints. Horizontal mode has no changes whatsoever. It does not take
+        into account the width of the screen as it is scrollable. Vertical mode is the only layout affected by width, so
+        you have one layout for bigger or medium sized screens, and the other for mobile or small tablets
+        screen.br<br><br>Breakpoint 1: <code>max-width: 900px</code> => fits the cards to take the remaining screen size
+        on their respective side<br>Breakpoint 2: <code>max-width: 725px</code> => puts the cards on the timeline at the
+        center of the screen</p>
       </p>
 
     </section>
@@ -311,7 +305,10 @@
     <section class="future">
 
       <h2>Future</h2>
-      <p>One major update planned is for vertical layouts which will theoretically give the option for users to change mobile layouts. Currently a user on mobile will see all cards centered and on the timeline, but the future update will be that the <strong>you</strong> will be able to change where the timeline is (left/right) and where the cards are (centered on the timeline/besides the timeline)</p>
+      <p>One major update planned is for vertical layouts which will theoretically give the option for users to change
+        mobile layouts. Currently a user on mobile will see all cards centered and on the timeline, but the future
+        update will be that the <strong>you</strong> will be able to change where the timeline is (left/right) and where
+        the cards are (centered on the timeline/besides the timeline)</p>
 
     </section>
 
@@ -320,8 +317,10 @@
   <div class="menu-flex">
 
     <div class="menu-button">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list"
+        viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
       </svg>
     </div>
     <div class="menu-container"></div>
