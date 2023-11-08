@@ -33,6 +33,13 @@ menuButton.addEventListener("click", function () {
   menuContainer.classList.toggle('shown');
 });
 
+addEventListener("click", (e) => {
+  if(menuContainer.classList.contains('shown') && e.target !== menuButton && e.target !== menuButton.querySelector('*')) menuContainer.classList.remove('shown');
+});
+addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') menuContainer.classList.remove('shown');
+});
+
 const sections = document.querySelectorAll('.docs section');
 
 sections.forEach((section) => {

@@ -206,17 +206,6 @@ header {
 
 /* menu code */
 
-.menu-flex {
-  position: fixed;
-  top: 2rem;
-  right: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: .5rem;
-  align-items: flex-end;
-  justify-content: flex-end;
-}
-
 .menu-button {
   background-color: var(--overlay);
   padding: .7rem;
@@ -226,6 +215,9 @@ header {
   align-items: center;
   cursor: pointer;
   border: solid 1px var(--gray);
+  position: fixed;
+  top: 2rem;
+  right: 1rem;
 }
 
 .menu-button svg {
@@ -234,6 +226,9 @@ header {
 }
 
 .menu-container {
+  position: fixed;
+  top: 6rem;
+  right: 1rem;
   background-color: var(--overlay);
   display: flex;
   flex-direction: column;
@@ -244,6 +239,8 @@ header {
   height: 20rem;
   overflow: auto;
   max-width: calc(100vw - 5rem);
+  min-height: 10rem;
+  max-height: calc(80vh - calc(6rem + 1.4rem + 1rem));
   padding: 1rem;
   border-radius: .5rem;
   border: solid 2px var(--gray);
