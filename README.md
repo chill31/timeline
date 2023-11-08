@@ -3,15 +3,21 @@ this timeline is created with basic HTML, CSS and JS, with no external libraries
 If you haven't seen, this is the file structure:
 
 ```go
-- index.html
-- docs.html
-- styles/
-  - docs-style.css
-  - style.css // this is the style file you want to take
+- prism/
+  - script.js
+  - style.css
 - scripts/
-  - script.js // this is the script file you want to take
-
-- README.md // this file
+  - doc-script.js
+  - script.js
+- src/ // you want the files in this folder
+  - script.js
+  - styles.css
+- styles/
+  - docs-styles.css
+  - style.css
+- docs.html
+- index.html
+- README.md
 ```
 
 ## Creating your own
@@ -35,7 +41,9 @@ the above styles are the basic theme, and you can use your own colors.
 
 There are a few things you might not want, like the imported font and body styles, so you can just go ahead and remove those.
 
-> NOTE: if you are removing the body styles, the timeline will not be centered and stuff, so just make sure you have a way to position the timeline container.
+But, in the `src/` folder, all the unnecessary things are removed, so anytime you see below saying to remove some code, don't read that if you take the files from the `src/` folder.
+
+> NOTE: if you are removing the body styles or taking the styles from src folder, the timeline will not be centered and stuff, so just make sure you have a way to position the timeline container.
 
 after the body styles, there are also a few default stylings for the whole page, so you can also remove those styles.
 
@@ -59,7 +67,7 @@ This was just the CSS part, for the HTML, you will want this structure for your 
 the `.line` and `.signal` elements are necessary for the timeline and the circles on the timeline. If you do not want those, remove their respective styles from the CSS and the elements from the HTML.
 
 ---
-finally, the javascript part. The javascript is only necessary if you want the animations when the card is on the visible viewport. The only thing the `script.js` file does is add a class from the card which then makes it appear by the CSS styles.
+finally, the javascript part. The javascript is only necessary if you want the animations when the card is on the visible viewport. The only thing the `src/script.js` file does is add a class from the card which then makes it appear by the CSS styles.
 
 If you are including the javascript file, then there is another thing you might want to look out for. There is a variable `hideAfterScroll`, which is by default `false`, meaning once the appearing animation on a card has been done, it will not be repeated, even if the user scrolls away from that card.
 If you change it to `true`, the card will be hidden after the user scrolls away and will have an animation again when the users comes to the card again.
