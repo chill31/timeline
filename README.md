@@ -76,3 +76,6 @@ If you change it to `true`, the card will be hidden after the user scrolls away 
 ```
 remove the above styles and you're set to go.<br>
 If you do want the animations, just take the script, styles, and HTML structure as it is.
+
+## Docs
+[this documentation](https://chill31-timeline.vercel.app/docs.html) is basically this README but with a little bit more detail. It has code structure and what code to take or not, and what you can do with the timeline. It's one page only.
