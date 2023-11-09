@@ -18,7 +18,9 @@
     </div>
     <p class="main-description">Anybody is free to use this timeline. This template uses marvel movies as a reference to
       create the timeline. Change the <code>.container</code> element's class from <code>vertical</code> to
-      <code>horizontal</code> to make the timeline go from left to right instead of top to bottom. There are a lot more features than direction only, so go to the <a href="/docs.html">not so descriptive documentation</a> to find out more. There's also the <a href="https://github.com/chill31/timeline">Github README</a>
+      <code>horizontal</code> to make the timeline go from left to right instead of top to bottom. There are a lot more
+      features than direction only, so go to the <a href="/docs.html">not so descriptive documentation</a> to find out
+      more. There's also the <a href="https://github.com/chill31/timeline">Github README</a>
       <br />
       <br />
       <br />
@@ -26,6 +28,76 @@
       5000 BC, but it was released in 2021, so in this timeline, the movie will be in the 2021 Card.
     </p>
   </header>
+
+  <div class="change-styles-container">
+
+    <button class="show-hide-button">Show styles</button>
+    <div class="styles-wrapper">
+
+      <span class="style">
+        <code class="style-name">--overlay</code>
+        <input type="color" tabindex="-1" value="#363c4b" data-variable="--overlay">
+      </span>
+
+      <span class="style">
+        <code class="style-name">--gray</code>
+        <input type="color" tabindex="-1" value="#dcf4ff" data-variable="--gray">
+      </span>
+
+      <span class="style">
+        <code class="style-name">--muted</code>
+        <input type="color" tabindex="-1" value="#dddddd" data-variable="--muted">
+      </span>
+
+      <span class="style">
+        <code class="style-name">--muted alpha</code>
+        <span class="input-container">
+          <input type="number" tabindex="-1" class="muted-alpha-input" maxlength="5" value="0.263"
+            data-variable="--muted">
+          <span class="unit">0-1</span>
+        </span>
+      </span>
+
+      <span class="style">
+        <code class="style-name">--gap-from-line</code>
+        <span class="input-container">
+          <input type="number" tabindex="-1" maxlength="4" value="4" data-variable="--gap-from-line" data-unit="rem">
+          <span class="unit">rem</span>
+        </span>
+      </span>
+
+      <span class="style">
+        <code class="style-name">--line-dimension</code>
+        <span class="input-container">
+          <input type="number" tabindex="-1" maxlength="4" value="1" data-variable="--line-dimension" data-unit="px">
+          <span class="unit">px</span>
+        </span>
+      </span>
+
+      <span class="style">
+        <code class="style-name">--signal-dimension</code>
+        <span class="input-container">
+          <input type="number" tabindex="-1" maxlength="4" value="1" data-variable="--signal-dimension" data-unit="rem">
+          <span class="unit">rem</span>
+        </span>
+      </span>
+
+      <span class="style">
+        <code class="style-name">--box-padding</code>
+        <span class="input-container">
+          <input type="number" tabindex="-1" maxlength="4" value="4" data-variable="--box-padding" data-unit="rem">
+          <span class="unit">rem</span>
+        </span>
+      </span>
+
+      <div class="button-flex">
+        <button class="hide-styles-button">Hide</button>
+        <button class="save-styles-button">Save</button>
+      </div>
+
+    </div>
+
+  </div>
 
   <div class="select-mode-container">
 
@@ -221,7 +293,8 @@
     <button class="end-button">Create Your Own</button>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/gh/chill31/better-number-input/better-number-input.js"></script>
   <script src="/scripts/script.js"></script>
-  </body>
+</body>
 
 </html>

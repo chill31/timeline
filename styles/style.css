@@ -4,8 +4,8 @@
   
   /* TIMELINE */
   --overlay: #363c4b;
-  --gray: rgb(220, 244, 255);
-  --muted: rgba(221, 221, 221, 0.263);
+  --gray: #dcf4ff;
+  --muted: #dddddd43;
   --gap-from-line: 4rem;
   --line-dimension: 1px;
   --signal-dimension: 1rem;
@@ -13,10 +13,10 @@
 
   /* PAGE */
   --font: Inter, sans-serif;
-  --background: rgb(43, 50, 65);
-  --links: rgba(55, 193, 255, 1);
-  --color: white;
-  --outline: white;
+  --background: #2b3241;
+  --links: #37c1ff;
+  --color: #ffffff;
+  --outline: #ffffff;
 }
 
 * {
@@ -33,6 +33,11 @@ body {
   flex-direction: column;
   padding-block: 4rem;
   gap: 8rem;
+  font-family: var(--font);
+  overflow-x: hidden;
+}
+
+input, button, textarea {
   font-family: var(--font);
 }
 
@@ -62,7 +67,48 @@ a {
 }
 
 button {
+  font-size: 1rem;
   font-family: var(--font);
+  background-color: var(--overlay);
+  padding: .75rem 1.5rem;
+  color: var(--color);
+  border-radius: .25rem;
+  border: solid 1px var(--muted);
+  cursor: pointer;
+  transition-duration: 300ms;
+  transition-property: background-color, color;
+}
+
+button:focus {
+  outline: solid 2px var(--outline);
+  outline-offset: 2px;
+}
+
+button:hover {
+  background-color: var(--muted);
+}
+
+input[type='text'] {
+  background-color: #363c4b;
+  padding: .1rem .2rem;
+  font-size: 1rem;
+  border: solid 1px var(--overlay);
+  border-radius: .2rem;
+  color: white;
+}
+
+input[type='text']:focus {
+  outline: solid 2px var(--outline);
+  outline-offset: 2px;
+}
+
+code {
+  padding: .2rem;
+  border: solid 1px var(--muted);
+  border-radius: .4rem;
+  background-color: var(--overlay);
+  color: var(--color);
+  font-size: 1rem;
 }
 
 a:focus {
@@ -114,12 +160,64 @@ header {
   }
 }
 
-.main-description code {
-  padding: .2rem;
-  border: solid 1px var(--muted);
-  border-radius: .4rem;
+.change-styles-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  width: 60rem;
+  max-width: 100vw;
+}
+
+.styles-wrapper {
+  padding: 1.5rem;
   background-color: var(--overlay);
-  color: var(--color);
+  width: calc(100% - 2rem);
+  border-radius: .5rem;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.styles-wrapper.active {
+  display: flex;
+}
+
+.style {
+  width: 100%;
+  background-color: var(--muted);
+  padding: .5rem;
+  border-radius: .25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.style .input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1ch;
+}
+
+.style input[type='text'] {
+  width: 4rem;
+}
+
+.input-container .unit {
+  width: 2rem;
+}
+
+.button-flex {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .7rem;
+  align-self: flex-end;
 }
 
 .select-mode-container {
@@ -169,7 +267,7 @@ header {
   height: 100vh;
   max-height: 25rem;
   padding: 2rem;
-  padding-top: calc(var(--box-padding) + .5rem);
+  padding-top: calc(var(--box-padding) + .5rem + calc(var(--line-dimension) * 1.5));
   /* for the signals to appear */
   overflow-x: scroll;
   align-items: flex-start;
@@ -292,7 +390,7 @@ for the reverse animation: */
   content: '';
   top: calc(-1 * var(--gap-from-line));
   width: calc(100% + var(--box-padding));
-  height: 1px;
+  height: var(--line-dimension);
   position: absolute;
   left: 0;
   transform: translateY(calc(var(--signal-dimension) / 2));
@@ -355,7 +453,6 @@ for the reverse animation: */
 
 }
 
-
 @keyframes pulse {
   0% {
     transform: scale(0.95);
@@ -398,21 +495,4 @@ for the reverse animation: */
 
 .end-button {
   font-size: 1.1rem;
-  background-color: var(--overlay);
-  padding: .75rem 1.5rem;
-  color: var(--color);
-  border-radius: .25rem;
-  border: solid 1px var(--muted);
-  cursor: pointer;
-  transition-duration: 300ms;
-  transition-property: background-color, color;
-}
-
-.end-button:focus {
-  outline: solid 2px var(--outline);
-  outline-offset: 2px;
-}
-
-.end-button:hover {
-  background-color: var(--muted);
 }

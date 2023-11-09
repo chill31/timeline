@@ -6,7 +6,7 @@ selectModes.forEach((selectMode) => {
     selectModes.forEach((selectMode) => {
       selectMode.classList.remove('selected');
     });
-    if(selectMode.classList.contains("select-v")) {
+    if (selectMode.classList.contains("select-v")) {
       container.classList.remove('horizontal');
       container.classList.add('vertical');
     } else {
@@ -42,3 +42,78 @@ const cardObserver = new IntersectionObserver((entries) => {
 allCards.forEach((card) => {
   cardObserver.observe(card);
 });
+
+const showHideStylesButton = document.querySelector('.show-hide-button');
+const hideStylesButton = document.querySelector('.hide-styles-button');
+const stylesWrapper = document.querySelector('.styles-wrapper');
+const stylesWrapperInputs = document.querySelectorAll('.styles-wrapper input');
+
+hideStylesButton.addEventListener('click', () => {
+  stylesWrapperInputs.forEach((input) => input.setAttribute('tabindex', '-1'));
+  stylesWrapper.classList.remove('active');
+});
+
+stylesWrapperInputs.forEach((input) => {
+  input.value = input.getAttribute('value');
+  input.betterInputOptions = {
+    allowNegative: false,
+    allowDecimal: true,
+    allowScientificNotation: false,
+    valueAsNumber: 0, // refrain from changing this
+    resetValues: false
+  };
+});
+
+let shown = false;
+showHideStylesButton.addEventListener("click", () => {
+  stylesWrapper.classList.toggle('active');
+  if (shown) {
+    showHideStylesButton.textContent = 'Show Styles';
+    stylesWrapperInputs.forEach((input) => input.setAttribute('tabindex', '-1'));
+  }
+  if (!shown) {
+    showHideStylesButton.textContent = 'Hide Styles';
+    stylesWrapperInputs.forEach((input) => input.removeAttribute('tabindex'));
+  }
+
+  return shown = !shown;
+});
+
+const saveButton = document.querySelector('.save-styles-button');
+saveButton.addEventListener('click', () => {
+  stylesWrapperInputs.forEach((input) => {
+
+    const unit = input.getAttribute('data-unit');
+
+    if(input.getAttribute('data-variable') === '--muted') {
+
+      // we know that the alpha input is going to run after the normal muted input. generate a code which sets the container property data-variable to the rgba converted value with the help of the function convertHexToRGBA and the alpha input value
+
+      const alphaInput = document.querySelector('.muted-alpha-input');
+      const alpha = alphaInput.value;
+
+      const mutedInput = document.querySelector(':not(.muted-alpha-input)[data-variable="--muted"]');
+      const hex = mutedInput.value;
+
+      const converted = convertHexToRGBA(hex, alpha);
+
+      container.style.setProperty(input.getAttribute('data-variable'), `rgba(${converted.r}, ${converted.g}, ${converted.b}, ${converted.a})`)
+
+    } else {
+
+      container.style.setProperty(input.getAttribute('data-variable'), `${input.value}${unit ?? ''}`);
+
+    }
+
+  })
+});
+
+function convertHexToRGBA(hex, alpha) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16),
+    a: parseFloat(alpha)
+  } : null;
+}

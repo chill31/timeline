@@ -18,8 +18,8 @@ timelineFormatPre.textContent = `<div class="container vertical">
 const defaultCSSVariablesPre = document.querySelector('code.default-css-variables-pre');
 defaultCSSVariablesPre.textContent = `:root {
   --overlay: #363c4b;
-  --gray: rgb(220, 244, 255);
-  --muted: rgba(221, 221, 221, 0.263);
+  --gray: #dcf4ff;
+  --muted: #dddddd43;
   --gap-from-line: 4rem;
   --line-dimension: 1px;
   --signal-dimension: 1rem;
