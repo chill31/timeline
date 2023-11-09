@@ -87,8 +87,6 @@ saveButton.addEventListener('click', () => {
 
     if(input.getAttribute('data-variable') === '--muted') {
 
-      // we know that the alpha input is going to run after the normal muted input. generate a code which sets the container property data-variable to the rgba converted value with the help of the function convertHexToRGBA and the alpha input value
-
       const alphaInput = document.querySelector('.muted-alpha-input');
       const alpha = alphaInput.value;
 
