@@ -51,6 +51,7 @@ const stylesWrapperInputs = document.querySelectorAll('.styles-wrapper input');
 hideStylesButton.addEventListener('click', () => {
   stylesWrapperInputs.forEach((input) => input.setAttribute('tabindex', '-1'));
   stylesWrapper.classList.remove('active');
+  showHideStylesButton.textContent = 'Show Styles';
 });
 
 stylesWrapperInputs.forEach((input) => {
