@@ -261,6 +261,7 @@ header {
   width: calc(100vw - 12rem);
   min-height: 100vh;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .container.horizontal {
