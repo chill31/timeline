@@ -246,7 +246,7 @@ header {
 }
 
 /** timeline code. THIS IS THE CODE YOU WILL WANT TO TAKE IF YOU ARE USING THIS TIMELINE TEMPLATE */
-
+/** GO TO /src/styles.css instead of taking code from here */
 .container {
   display: flex;
   gap: var(--box-padding);
@@ -474,6 +474,9 @@ for the reverse animation: */
 .card .card-title {
   margin-bottom: 1rem;
 }
+
+/** THE ABOVE STATEMENT IS THE CODE YOU NEED IF YOU ARE TAKING THIS TEMPLATE */
+/** BETTER WAY: GO TO /src/styles.css */
 
 /** if you are creating your own content, and not necessarily a list, remove these styles */
 .card ul {
