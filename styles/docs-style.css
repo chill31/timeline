@@ -304,17 +304,17 @@ header {
 [data-header='2'] {
   margin-left: 1rem !important;
   margin-block: .6rem;
-  opacity: .9;
+  opacity: .95;
 }
 
 [data-header='3'] {
   margin-left: 1.5rem !important;
   margin-block: .5rem;
-  opacity: .7;
+  opacity: .9;
 }
 
 [data-header='4'] {
   margin-left: 2.2rem !important;
   margin-block-end: .3rem;
-  opacity: .5;
+  opacity: .85;
 }
