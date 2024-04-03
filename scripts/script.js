@@ -86,7 +86,7 @@ saveButton.addEventListener('click', () => {
 
     const unit = input.getAttribute('data-unit');
 
-    if(input.getAttribute('data-variable') === '--muted') {
+    if (input.getAttribute('data-variable') === '--muted') {
 
       const alphaInput = document.querySelector('.muted-alpha-input');
       const alpha = alphaInput.value;

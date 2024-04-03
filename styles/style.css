@@ -260,6 +260,8 @@ header {
   padding-block: var(--box-padding);
   width: calc(100vw - 12rem);
   min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .container.horizontal {
@@ -301,12 +303,12 @@ header {
   border-radius: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  top: 0;
+  top: calc(.5 * var(--signal-dimension));
 }
 
 .container.vertical .line::after {
   top: unset;
-  bottom: calc(-1 * var(--signal-dimension));
+  bottom: calc(-.5 * var(--signal-dimension));
 }
 
 .card {
