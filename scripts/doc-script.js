@@ -66,9 +66,8 @@ sections.forEach((section) => {
 
     sectionEl.appendChild(headerEl);
     headerEl.addEventListener('click', () => {
-      const offsetTop = header.offsetTop;
       window.scrollTo({
-        top: offsetTop,
+        top: header.offsetTop,
         behavior: 'smooth'
       });
     });
