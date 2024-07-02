@@ -66,7 +66,6 @@ sections.forEach((section) => {
 
     sectionEl.appendChild(headerEl);
     headerEl.addEventListener('click', () => {
-      console.log(header.offsetTop);
       window.scrollTo({
         top: header.offsetTop - 25,
         behavior: 'smooth'
@@ -81,7 +80,6 @@ sections.forEach((section) => {
     } else {
       if (Number(e.target.parentElement.getAttribute("data-header")) > 1) return;
     }
-    console.log('runs')
     const offsetTop = section.offsetTop;
     window.scrollTo({
       top: offsetTop - 25,
