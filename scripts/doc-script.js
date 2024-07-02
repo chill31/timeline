@@ -34,7 +34,7 @@ menuButton.addEventListener("click", function () {
 });
 
 addEventListener("click", (e) => {
-  if(menuContainer.classList.contains('shown') && e.target !== menuButton && e.target !== menuButton.querySelector('*')) menuContainer.classList.remove('shown');
+  if (menuContainer.classList.contains('shown') && e.target !== menuButton && e.target !== menuButton.querySelector('*')) menuContainer.classList.remove('shown');
 });
 addEventListener('keydown', (e) => {
   if (e.key === 'Escape') menuContainer.classList.remove('shown');
@@ -66,18 +66,25 @@ sections.forEach((section) => {
 
     sectionEl.appendChild(headerEl);
     headerEl.addEventListener('click', () => {
+      console.log(header.offsetTop);
       window.scrollTo({
-        top: header.offsetTop,
+        top: header.offsetTop - 25,
         behavior: 'smooth'
       });
     });
 
   });
 
-  sectionEl.addEventListener('click', () => {
+  sectionEl.addEventListener('click', (e) => {
+    if (e.target.classList.contains('section-map-header')) {
+      if (Number(e.target.getAttribute("data-header")) > 1) return;
+    } else {
+      if (Number(e.target.parentElement.getAttribute("data-header")) > 1) return;
+    }
+    console.log('runs')
     const offsetTop = section.offsetTop;
     window.scrollTo({
-      top: offsetTop,
+      top: offsetTop - 25,
       behavior: 'smooth'
     });
   });
