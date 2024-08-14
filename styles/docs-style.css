@@ -106,7 +106,18 @@ header {
   color: var(--gray);
 }
 
+@media (max-width: 990px) {
+  .title {
+    font-size: 3.5rem;
+  }
+  .title-info-text {
+    font-size: 1.2rem;
+  }
+}
+
 .docs {
+  max-width: calc(100vw - 1rem);
+  overflow-x: hidden;
   width: fit-content;
   padding-inline: 2rem;
   padding-block: 2rem;
@@ -123,6 +134,7 @@ header {
   .docs {
     border: none;
     align-items: flex-start;
+    padding: 0;
   }
 }
 
